@@ -1,58 +1,92 @@
 body {
-    background-color: #000000;
-    color: white;
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
+  background-color: #000000;
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
 .stopwatch-container {
-    text-align: center;
-    width: 300px;
+  text-align: center;
+  width: 350px;
 }
 
 .display {
-    font-size: 48px;
-    margin-bottom: 40px;
-    font-weight: bold;
+  font-size: 56px;
+  margin-bottom: 40px;
+  font-weight: bold;
 }
 
 .buttons {
-    display: flex;
-    justify-content: space-around;
-    gap: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 30px;
 }
 
 .btn {
-    padding: 15px 25px;
-    font-size: 16px;
-    border: none;
-    border-radius: 30px;
-    cursor: pointer;
-    color: white;
-    width: 100px;
+  padding: 15px;
+  font-size: 16px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  color: white;
+  width: 100px;
 }
 
-.start { background-color: #6c63ff; } 
-.reset { background-color: #333333; } 
-.lap { background-color: #333333; }
+.start {
+  background-color: #6c63ff;
+}
+.reset {
+  background-color: #333;
+}
+.lap {
+  background-color: #333;
+}
+
+.laps-section {
+  margin-top: 20px;
+}
+
+.lap-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  color: #888;
+  font-size: 14px;
+  border-bottom: 1px solid #333;
+}
 
 .laps {
-    list-style: none;
-    padding: 0;
-    margin-top: 30px;
-    max-height: 200px;
-    overflow-y: auto;
-    text-align: left;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 250px;
+  overflow-y: auto;
 }
 
 .laps li {
-    border-bottom: 1px solid #222;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+  border-bottom: 1px solid #222;
+  font-size: 16px;
+}
+
+.lap-count {
+  color: white;
+  width: 30px;
+  text-align: left;
+}
+.lap-time {
+  color: white;
+  flex: 1;
+  text-align: center;
+}
+.overall-time {
+  color: white;
+  flex: 1;
+  text-align: right;
 }

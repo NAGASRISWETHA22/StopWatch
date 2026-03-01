@@ -2,6 +2,7 @@ let timer;
 let startTime;
 let elapsedTime = 0;
 let isRunning = false;
+let lastLapTime = 0;
 
 const display = document.getElementById('display');
 const startBtn = document.getElementById('startBtn');
@@ -25,20 +26,18 @@ function formatTime(ms) {
 
 startBtn.addEventListener('click', () => {
     if (!isRunning) {
-      isRunning = true;
+        isRunning = true;
         startTime = Date.now() - elapsedTime;
         timer = setInterval(() => {
             elapsedTime = Date.now() - startTime;
             display.innerText = formatTime(elapsedTime);
         }, 10);
         startBtn.innerText = "Pause";
-        startBtn.style.backgroundColor = "#ff4d4d"; 
+        startBtn.style.backgroundColor = "#6c63ff"; 
     } else {
-       
         isRunning = false;
         clearInterval(timer);
         startBtn.innerText = "Resume";
-        startBtn.style.backgroundColor = "#6c63ff";
     }
 });
 
@@ -46,17 +45,25 @@ resetBtn.addEventListener('click', () => {
     clearInterval(timer);
     isRunning = false;
     elapsedTime = 0;
+    lastLapTime = 0;
     display.innerText = "00:00:00.00";
     startBtn.innerText = "Start";
-    startBtn.style.backgroundColor = "#6c63ff";
-    lapsList.innerHTML = ""; 
+    lapsList.innerHTML = "";
 });
 
 lapBtn.addEventListener('click', () => {
     if (isRunning) {
-        const lapTime = formatTime(elapsedTime);
+        const currentOverall = elapsedTime;
+        const currentLapTime = currentOverall - lastLapTime; 
+        
         const li = document.createElement('li');
-        li.innerHTML = `<span>Lap ${lapsList.children.length + 1}</span> <span>${lapTime}</span>`;
-        lapsList.prepend(li); 
+        li.innerHTML = `
+            <span class="lap-count">${(lapsList.children.length + 1).toString().padStart(2, '0')}</span>
+            <span class="lap-time">${formatTime(currentLapTime)}</span>
+            <span class="overall-time">${formatTime(currentOverall)}</span>
+        `;
+        
+        lapsList.prepend(li);
+        lastLapTime = currentOverall; 
     }
 });
