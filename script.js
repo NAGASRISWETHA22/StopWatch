@@ -17,7 +17,7 @@ function formatTime(ms) {
    
     return (
         (minutes < 10 ? "0" + minutes : minutes) + ":" +
-        (seconds < 10 ? "0" + seconds : seconds) + "." +
+        (seconds < 10 ? "0" + seconds : seconds) + ":" +
         (milliseconds < 10 ? "0" + milliseconds : milliseconds)
     );
 }
@@ -44,7 +44,7 @@ resetBtn.addEventListener('click', () => {
     isRunning = false;
     elapsedTime = 0;
     lastLapTime = 0;
-    display.innerText = "00:00.00";
+    display.innerText = "00:00:00";
     startBtn.innerText = "Start";
     lapsList.innerHTML = "";
 });
